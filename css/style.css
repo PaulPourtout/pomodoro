@@ -1,0 +1,48 @@
+html, body, h1, h2, h3, h4, h5, h6, p, span, ul, li, form, input {
+   margin: 0;
+   padding: 0;
+}
+
+button {
+   box-shadow: none;
+   background-color: none;
+   border: none;
+}
+
+body {
+   height: 100vh;
+   color: #fff;
+   font-family: sans-serif;
+   text-align: center;
+   background-image: linear-gradient(to left, #44A08D, #093637);
+}
+
+header {
+   padding: 15px 0;
+}
+
+#main-part {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   height: 50vh;
+}
+
+#main-part p {
+   font-size: 4rem;
+}
+
+#main-part div {
+   display: flex;
+   justify-content: center;
+}
+
+#main-part button {
+   background-color: #fff;
+   color: #44A08D;
+   font-size: 2rem;
+   border-radius: 30px;
+   margin: 20px;
+   padding: 10px 30px;
+   cursor: pointer;
+}
