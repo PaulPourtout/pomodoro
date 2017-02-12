@@ -1,5 +1,6 @@
 var minutes = document.getElementById("minutes-left");
 var secondes = document.getElementById("secondes-left");
+var doublePoint = document.querySelector("#time-left span:nth-child(2)");
 var startBtn = document.getElementById("start-btn");
 var resetBtn = document.getElementById("reset-btn");
 
@@ -17,25 +18,40 @@ var timeCount = function() {
    }
    else {
       secondesLeft--;
-      secondes.textContent = secondesLeft;
+      if (secondesLeft < 10) {
+         secondes.textContent = "0" + secondesLeft;
+      }
+      else {
+         secondes.textContent = secondesLeft;
+      }
    }
 };
 
-var resetTimeCount = function() {
-   clearInterval(timeCountId);
-};
 
 startBtn.addEventListener("click", function() {
    if (clickCount === 0) {
       timeCountId = setInterval(timeCount, 1000);
       startBtn.textContent = "Stop";
+      doublePoint.classList.add("blink");
       clickCount = 1;
    }
    else {
-      clearInterval(timeCount);
+      clearInterval(timeCountId);
       startBtn.textContent = "Start";
+      doublePoint.classList.remove("blink");
       clickCount = 0;
    }
 });
 
-resetBtn.addEventListener("click", resetTimeCount());
+var resetTimeCount = function() {
+   clearInterval(timeCountId);
+   startBtn.textContent = "Start";
+   clickCount = 0;
+   secondesLeft = 0;
+   minutesLeft = 25;
+   minutes.textContent = minutesLeft;
+   secondes.textContent = "0" + secondesLeft;
+   doublePoint.classList.remove("blink");
+};
+
+resetBtn.addEventListener("click", resetTimeCount);
