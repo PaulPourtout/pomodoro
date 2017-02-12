@@ -38,17 +38,31 @@ header {
 }
 
 #main-part button {
-   background-color: #fff;
+   background-color: #EFEFEF;
    color: #44A08D;
    font-size: 2rem;
    border-radius: 30px;
    margin: 20px;
    padding: 10px 30px;
    cursor: pointer;
+   overflow: hidden;
+   position: relative;
 }
 
 .blink {
    animation: blink 2s infinite;
+}
+
+.ink {
+   display: block;
+   position: absolute;
+   background: hsl(180, 40%, 80%);
+   border-radius: 100%;
+   transform: scale(0);
+}
+
+.ink.animate {
+   animation: ripple 0.65s linear;
 }
 
 @keyframes blink {
@@ -57,5 +71,12 @@ header {
    }
    50% {
       opacity: 0;
+   }
+}
+
+@keyframes ripple {
+   100% {
+      opacity: 0;
+      transform: scale(2.5);
    }
 }

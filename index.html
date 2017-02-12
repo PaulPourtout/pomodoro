@@ -5,21 +5,27 @@
   <meta charset="utf-8">
   <meta name="viewport">
   <title>Pomodoro</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="/node_modules/normalize.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-<header>
-   <h1>Pomodoro</h1>
-</header>
-<section id="main-part">
-   <p id="time-left"><span id="minutes-left">25</span><span>:</span><span id="secondes-left">00</span></p>
-   <div class="flex">
+  <nav>
+    <ul>
+      <li><button type="button" name="button"><i class="fa fa-settings"></i></button></li>
+    </ul>
+  </nav>
+  <header>
+    <h1>Pomodoro</h1>
+  </header>
+  <section id="main-part">
+    <p id="time-left"><span id="minutes-left">25</span><span>:</span><span id="secondes-left">00</span></p>
+    <div id="buttons-container">
       <button id="start-btn" type="button" name="button">Start</button>
       <button id="reset-btn" type="button" name="button">Reset</button>
-   </div>
-</section>
+    </div>
+  </section>
 
   <script type="text/javascript" src="js/script.js">
   </script>
