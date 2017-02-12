@@ -46,6 +46,7 @@ header {
    padding: 10px 30px;
    cursor: pointer;
    overflow: hidden;
+   user-select: none;
    position: relative;
 }
 

@@ -63,11 +63,9 @@ buttons.forEach(function(item) {
     item.addEventListener("click", function(e) {
         var inkWidth = parseFloat(getComputedStyle(item).getPropertyValue("width"));
         var inkHeight = parseFloat(getComputedStyle(item).getPropertyValue("height"));
+        var x = e.pageX - item.offsetLeft - inkWidth / 2;
+        var y = e.pageY - item.offsetTop - inkWidth / 2;
 
-        x = e.pageX - item.offsetLeft - inkWidth / 2;
-        console.log("x", x);
-        y = e.pageY - item.offsetTop - inkWidth / 2;
-        console.log("y", y);
         var ink = document.createElement("span");
         ink.classList.add("ink");
         ink.classList.add("animate");
