@@ -24,8 +24,9 @@ header {
 #main-part {
    display: flex;
    flex-direction: column;
-   justify-content: center;
-   height: 50vh;
+   align-items: center;
+   justify-content: space-around;
+   height: 90vh;
 }
 
 #main-part p {
