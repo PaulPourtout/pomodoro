@@ -5,9 +5,9 @@ var startBtn = document.getElementById("start-btn");
 var resetBtn = document.getElementById("reset-btn");
 
 var minutesPresetSession = 0;
-var secondesPresetSession = 5;
+var secondesPresetSession = 2;
 var minutesPresetBreak = 0;
-var secondesPresetBreak = 7;
+var secondesPresetBreak = 2;
 var minutesPresetLongBreak = 0;
 var secondesPresetLongBreak = 10;
 
@@ -15,7 +15,7 @@ var minutesLeft = minutesPresetSession;
 var secondesLeft = secondesPresetSession;
 var timeCountId = null;
 var clickCount = 0;
-var sessionsNumber = 0;
+var sessionsNumber = 6;
 
 // LESS THAN TEN
 var lessThanTen = function() {
@@ -34,14 +34,22 @@ var lessThanTen = function() {
 
 // TIME COUNT
 var timeCount = function() {
-	if (secondesLeft === 0 && minutesLeft === 0) {
+	if (secondesLeft <= 0 && minutesLeft <= 0) {
 		resetTimeCount();
-		sessionsNumber++;
-		if (sessionsNumber % 2 !== 0) {
+		if (sessionsNumber < 7) {
+			sessionsNumber++;
+		}
+		else {
+			sessionsNumber = 0;
+		}
+		if (sessionsNumber % 2 !== 0 && sessionsNumber < 7) {
 			startBreak();
 		}
+		else if (sessionsNumber === 7) {
+			startLongBreak();
+		}
 	} else {
-		if (secondesLeft === 0) {
+		if (secondesLeft <= 0) {
 			minutesLeft--;
 			secondesLeft = 59;
 			lessThanTen();
@@ -54,18 +62,20 @@ var timeCount = function() {
 
 // START BREAK
 var startBreak = function() {
-	if (sessionsNumber !== 7) {
 		startBtn.textContent = "Start Break";
 		secondesLeft = secondesPresetBreak;
 		minutesLeft = minutesPresetBreak;
 		lessThanTen();
-	} else {
-		sessionsNumber = 0;
-		startBtn.textContent = "Start Long Break";
-		secondesLeft = secondesPresetLongBreak;
-		minutesLeft = minutesPresetLongBreak;
-		lessThanTen();
-	}
+};
+
+// START LONG BREAK
+var startLongBreak = function() {
+	startBtn.textContent = "Start Long Break";
+	console.log("long break", sessionsNumber);
+	secondesLeft = secondesPresetLongBreak;
+	minutesLeft = minutesPresetLongBreak;
+	lessThanTen();
+	// sessionsNumber = 0;
 };
 
 // RESET TIMECOUNT
@@ -79,13 +89,11 @@ var resetTimeCount = function() {
 	doublePoint.classList.remove("blink");
 };
 
-// AU CHARGEMENT
-// Check que les valeurs inferieur à 10 sont affichées correctement
-lessThanTen();
 
 // START PROGRAM ON CLICK
 startBtn.addEventListener("click", function() {
 	if (clickCount === 0) {
+		console.log("sessionsNumber", sessionsNumber);
 		timeCountId = setInterval(timeCount, 1000);
 		startBtn.textContent = "Stop";
 		doublePoint.classList.add("blink");
@@ -98,5 +106,13 @@ startBtn.addEventListener("click", function() {
 	}
 });
 
-// RESET PROGRAM AU CLICK
-resetBtn.addEventListener("click", resetTimeCount);
+// RESET PROGRAM ON CLICK
+resetBtn.addEventListener("click", function(){
+	resetTimeCount();
+	sessionsNumber = 0;
+	console.log("sessionsNumber", sessionsNumber);
+});
+
+// ON LOADING
+// Check que les valeurs inferieur à 10 sont affichées correctement
+lessThanTen();

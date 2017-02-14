@@ -18,24 +18,28 @@
 	</nav>
 
 	<section id="settings-modal">
-		<button id="close-modal"><i class="fa fa-times"></i></button>
-		<h3 class="text-center">
-		Pomodoro settings
-	</h3>
+		<h1 class="text-center">Pom<i class="fa fa-clock-o"></i>doro</h1>
+		<h3 class="text-center">Settings</h3>
 		<form class="">
-			<div class="settings-working-session">
-				<input type="text" name="name" placeholder="25">
-				<input type="text" name="name" placeholder="00">
+			<div id="settings-working-session">
+				<p>Work Session Length</p>
+				<input class="minutes" type="number" name="name" value="25">
+				<span class="time-points">:</span>
+				<input class="secondes" type="number" name="name" value="00">
 			</div>
-			<div class="settings-break-session">
-				<input type="text" name="name" placeholder="05">
-				<input type="text" name="name" placeholder="00">
+			<div id="settings-break-session">
+				<p>Break Length</p>
+				<input class="minutes" type="number" name="name" value="05">
+				<span class="time-points">:</span>
+				<input class="secondes" type="number" name="name" value="00">
 			</div>
-			<div class="settings-long-break-session">
-				<input type="text" name="name" placeholder="15">
-				<input type="text" name="name" placeholder="00">
+			<div id="settings-long-break-session">
+				<p>Long Break Length</p>
+				<input class="minutes" type="number" name="name" value="15">
+				<span class="time-points">:</span>
+				<input class="secondes" type="number" name="name" value="00">
 			</div>
-			<input type="button" name="name" value="Save changes">
+			<input id="save-settings" type="button" name="name" value="Save changes">
 		</form>
 	</section>
 	<header>
@@ -50,7 +54,8 @@
 	</section>
 
 	<script type="text/javascript" src="js/script.js"></script>
-	<script type="text/javascript" src="js/ripple.js"></script>
+	<script type="text/javascript" src="js/settings.js"></script>
+	<!-- <script type="text/javascript" src="js/ripple.js"></script> -->
 </body>
 
 </html>

@@ -1,128 +1,152 @@
 html, body, h1, h2, h3, h4, h5, h6, p, span, ul, li, form, input {
-   margin: 0;
-   padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 ul {
-	list-style: none;
+    list-style: none;
 }
 
 button, input {
-   box-shadow: none;
-   background-color: transparent;
-   border: none;
+    box-shadow: none;
+    background-color: transparent;
+    border: none;
 }
 
 body {
-   height: 100vh;
-   color: #fff;
-   font-family: sans-serif;
-   text-align: center;
-   background-image: linear-gradient(to left, #44A08D, #093637);
+    height: 100vh;
+    color: #fff;
+    font-family: sans-serif;
+    text-align: center;
+    background-image: linear-gradient(to left, #44A08D, #093637);
 }
 
 .text-center {
-	text-align: center;
-}
-header {
-   padding: 15px 0;
+    text-align: center;
 }
 
+header {
+    padding: 15px 0;
+}
+
+h1 {
+	font-size: 2rem;
+}
 
 nav {
-	position: absolute;
-	right: 15px;
-	top: 15px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 200;
 }
 
+
+/* SETTINGS PART */
 #settings-btn {
-	color: #fff;
-	font-size: 2rem;
-	cursor: pointer;
-	text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#settings-btn .fa-cog {
+    color: #fff;
+}
+
+#settings-btn .fa-times {
+    color: #196263;
 }
 
 #settings-modal {
-	display: block;
-	position: absolute;
-	background-color: #fff;
-	color: #196263;
-	padding: 20px;
-	box-sizing: border-box;
-	height: 100vh;
-	width: 100%;
-	z-index: 50;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    color: #196263;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+    z-index: 50;
+	transition: 0.5s;
 }
 
-#close-modal {
-	position: absolute;
-	right: 15px;
-	top: 15px;
+#settings-modal input[type="text"] {
+	text-decoration: underline;
+	width: 40px;
 	font-size: 2rem;
-	color: #196263;
-	text-shadow: 3rem 3rem 10px rgba(0, 0, 0, 0.2);
 }
 
+.time-points {
+	font-size: 2rem;
+}
+
+
+
+
+/* MAIN PART*/
 #main-part {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: space-around;
-   height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 90vh;
 }
 
 #main-part p {
-   font-size: 4rem;
-   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    font-size: 4rem;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 #main-part div {
-   display: flex;
-   justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #main-part button, input[type="button"] {
-   background-color: #EFEFEF;
-   color: #196263;
-   font-size: 2rem;
-   border-radius: 30px;
-   margin: 20px;
-   padding: 10px 30px;
-   cursor: pointer;
-   overflow: hidden;
-   user-select: none;
-   position: relative;
-   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    background-color: #EFEFEF;
+    color: #196263;
+    text-align: center;
+    font-size: 1.7rem;
+    border-radius: 30px;
+    margin: 20px;
+    width: 170px;
+    padding: 10px 30px;
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+    position: relative;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .blink {
-   animation: blink 2s infinite;
+    animation: blink 2s infinite;
 }
 
 .ink {
-   display: block;
-   position: absolute;
-   background: hsl(180, 40%, 80%);
-   border-radius: 100%;
-   transform: scale(0);
+    display: block;
+    position: absolute;
+    background: hsl(180, 40%, 80%);
+    border-radius: 100%;
+    transform: scale(0);
 }
 
 .ink.animate {
-   animation: ripple 0.65s linear;
+    animation: ripple 0.65s linear;
 }
 
 @keyframes blink {
-   0%, 100% {
-      opacity: 1;
-   }
-   50% {
-      opacity: 0;
-   }
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 @keyframes ripple {
-   100% {
-      opacity: 0;
-      transform: scale(2.5);
-   }
+    100% {
+        opacity: 0;
+        transform: scale(2.5);
+    }
 }
