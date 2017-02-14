@@ -4,7 +4,6 @@ var doublePoint = document.querySelector("#time-left span:nth-child(2)");
 var startBtn = document.getElementById("start-btn");
 var resetBtn = document.getElementById("reset-btn");
 
-
 var minutesPresetSession = 0;
 var secondesPresetSession = 5;
 var minutesPresetBreak = 0;
@@ -18,6 +17,7 @@ var timeCountId = null;
 var clickCount = 0;
 var sessionsNumber = 0;
 
+// LESS THAN TEN
 var lessThanTen = function() {
 	if (minutesLeft < 10) {
 		minutes.textContent = "0" + minutesLeft;
@@ -31,25 +31,16 @@ var lessThanTen = function() {
 	}
 };
 
-lessThanTen();
 
+// TIME COUNT
 var timeCount = function() {
 	if (secondesLeft === 0 && minutesLeft === 0) {
-		alert("fini!!! Pause");
 		resetTimeCount();
 		sessionsNumber++;
-		console.log("session Number ", sessionsNumber);
-		if (sessionsNumber < 5) {
-			secondesLeft = secondesPresetBreak;
-			minutesLeft = minutesPresetBreak;
+		if (sessionsNumber % 2 !== 0) {
+			startBreak();
 		}
-		else {
-			sessionsNumber = 0;
-			secondesLeft = secondesPresetLongBreak;
-			minutesLeft = minutesPresetLongBreak;
-		}
-	}
-	else {
+	} else {
 		if (secondesLeft === 0) {
 			minutesLeft--;
 			secondesLeft = 59;
@@ -61,8 +52,38 @@ var timeCount = function() {
 	}
 };
 
+// START BREAK
+var startBreak = function() {
+	if (sessionsNumber !== 7) {
+		startBtn.textContent = "Start Break";
+		secondesLeft = secondesPresetBreak;
+		minutesLeft = minutesPresetBreak;
+		lessThanTen();
+	} else {
+		sessionsNumber = 0;
+		startBtn.textContent = "Start Long Break";
+		secondesLeft = secondesPresetLongBreak;
+		minutesLeft = minutesPresetLongBreak;
+		lessThanTen();
+	}
+};
 
+// RESET TIMECOUNT
+var resetTimeCount = function() {
+	clearInterval(timeCountId);
+	startBtn.textContent = "Start working";
+	clickCount = 0;
+	secondesLeft = secondesPresetSession;
+	minutesLeft = minutesPresetSession;
+	lessThanTen();
+	doublePoint.classList.remove("blink");
+};
 
+// AU CHARGEMENT
+// Check que les valeurs inferieur à 10 sont affichées correctement
+lessThanTen();
+
+// START PROGRAM ON CLICK
 startBtn.addEventListener("click", function() {
 	if (clickCount === 0) {
 		timeCountId = setInterval(timeCount, 1000);
@@ -71,43 +92,11 @@ startBtn.addEventListener("click", function() {
 		clickCount = 1;
 	} else {
 		clearInterval(timeCountId);
-		startBtn.textContent = "Start";
+		startBtn.textContent = "Continue";
 		doublePoint.classList.remove("blink");
 		clickCount = 0;
 	}
 });
 
-var resetTimeCount = function() {
-	clearInterval(timeCountId);
-	startBtn.textContent = "Start";
-	clickCount = 0;
-	secondesLeft = secondesPresetSession;
-	minutesLeft = minutesPresetSession;
-	lessThanTen();
-	doublePoint.classList.remove("blink");
-};
-
+// RESET PROGRAM AU CLICK
 resetBtn.addEventListener("click", resetTimeCount);
-
-
-
-// RIPPLE EFFECT
-var buttons = document.querySelectorAll("#buttons-container button");
-console.log("buttons", buttons);
-buttons.forEach(function(item) {
-	item.addEventListener("click", function(e) {
-		var inkWidth = parseFloat(getComputedStyle(item).getPropertyValue("width"));
-		var inkHeight = parseFloat(getComputedStyle(item).getPropertyValue("height"));
-		var x = e.pageX - item.offsetLeft - inkWidth / 2;
-		var y = e.pageY - item.offsetTop - inkWidth / 2;
-
-		var ink = document.createElement("span");
-		ink.classList.add("ink");
-		ink.classList.add("animate");
-		ink.style.height = inkWidth + "px";
-		ink.style.width = inkWidth + "px";
-		ink.style.top = y + "px";
-		ink.style.left = x + "px";
-		item.appendChild(ink);
-	});
-});
