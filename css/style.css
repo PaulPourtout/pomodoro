@@ -58,7 +58,7 @@ nav {
 }
 
 #settings-modal {
-    display: none;
+    display: block;
     position: absolute;
     background-color: #fff;
     color: #196263;
@@ -70,10 +70,15 @@ nav {
 	transition: 0.5s;
 }
 
-#settings-modal input[type="text"] {
+#settings-modal input[type=number] {
 	text-decoration: underline;
-	width: 40px;
+	width: 60px;
 	font-size: 2rem;
+}
+
+#settings-modal input[type=number]::-webkit-inner-spin-button {
+	background-color: red;
+	color: #fff;
 }
 
 .time-points {
@@ -89,7 +94,7 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 90vh;
+    height: 85vh;
 }
 
 #main-part p {
@@ -99,6 +104,7 @@ nav {
 
 #main-part div {
     display: flex;
+	flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<title>Pomodoro</title>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<link rel="stylesheet" href="/node_modules/normalize.css">
+	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -23,21 +23,23 @@
 		<form class="">
 			<div id="settings-working-session">
 				<p>Work Session Length</p>
-				<input class="minutes" type="number" name="name" value="25">
+				<input class="minutes" type="number" name="name" min="0">
 				<span class="time-points">:</span>
-				<input class="secondes" type="number" name="name" value="00">
+				<input class="secondes" type="number" name="name" min="0">
 			</div>
 			<div id="settings-break-session">
 				<p>Break Length</p>
-				<input class="minutes" type="number" name="name" value="05">
+				<input class="minutes" type="number" name="name" min="0">
 				<span class="time-points">:</span>
-				<input class="secondes" type="number" name="name" value="00">
+				<input class="secondes" type="number" name="name" min="0">
 			</div>
 			<div id="settings-long-break-session">
 				<p>Long Break Length</p>
-				<input class="minutes" type="number" name="name" value="15">
+				<label for="">Min</label>
+				<input class="minutes" type="number" name="name" min="0">
 				<span class="time-points">:</span>
-				<input class="secondes" type="number" name="name" value="00">
+				<label for="">Sec</label>
+				<input class="secondes" type="number" name="name" min="0">
 			</div>
 			<input id="save-settings" type="button" name="name" value="Save changes">
 		</form>
