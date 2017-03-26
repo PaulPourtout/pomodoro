@@ -15,7 +15,7 @@ var minutesLeft = minutesPresetSession;
 var secondesLeft = secondesPresetSession;
 var timeCountId = null;
 var clickCount = 0;
-var sessionsNumber = 6;
+var sessionsNumber = 0;
 
 // LESS THAN TEN
 var lessThanTen = function() {
@@ -36,6 +36,7 @@ var lessThanTen = function() {
 var timeCount = function() {
 	if (secondesLeft <= 0 && minutesLeft <= 0) {
 		resetTimeCount();
+		console.log(sessionsNumber);
 		if (sessionsNumber < 7) {
 			sessionsNumber++;
 		}
